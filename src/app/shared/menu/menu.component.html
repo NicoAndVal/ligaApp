@@ -1,0 +1,38 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav  mode="push" >
+      <h1 class="titulo-menu">Menu</h1>
+
+      <mat-nav-list>
+        <a routerLink="./grupo-1" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>done</mat-icon>
+          Grupo 1
+        </a>
+        <a routerLink="./grupo-2" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>done</mat-icon>
+          Grupo 2
+        </a>
+        <a routerLink="./grupo-3" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>done</mat-icon>
+          Grupo 3
+        </a>
+        <a routerLink="./grupo-4" mat-list-item (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon>done</mat-icon>
+          Grupo 4
+        </a>
+
+      </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+
+</mat-sidenav-container>
