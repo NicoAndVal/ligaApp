@@ -8,16 +8,19 @@ import { Grupo1Component } from './grupo1/grupo1.component';
 import { Grupo2Component } from './grupo2/grupo2.component';
 import { Grupo3Component } from './grupo3/grupo3.component';
 import { Grupo4Component } from './grupo4/grupo4.component';
+import { NuevoJugadorComponent } from './nuevo-jugador/nuevo-jugador.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, Grupo1Component, Grupo2Component, Grupo3Component, Grupo4Component],
+  declarations: [HomeComponent, Grupo1Component, Grupo2Component, Grupo3Component, Grupo4Component, NuevoJugadorComponent],
   imports: [
     CommonModule,
     PartidosRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class PartidosModule { }

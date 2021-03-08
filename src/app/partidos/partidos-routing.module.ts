@@ -5,6 +5,7 @@ import { Grupo2Component } from "./grupo2/grupo2.component";
 import { Grupo3Component } from "./grupo3/grupo3.component";
 import { Grupo4Component } from "./grupo4/grupo4.component";
  import { HomeComponent } from "./home/home.component";
+import { NuevoJugadorComponent } from "./nuevo-jugador/nuevo-jugador.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path: 'grupo-2', component: Grupo2Component},
       {path: 'grupo-3', component: Grupo3Component},
       {path: 'grupo-4', component: Grupo4Component},
+      {path: 'nuevo-jugador', component: NuevoJugadorComponent}
     ]
   }
 ]
