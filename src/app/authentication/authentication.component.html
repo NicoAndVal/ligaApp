@@ -1,0 +1,21 @@
+<mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-tile>
+    <form [formGroup]="loginForm" class="example-form" class="formulario" (ngSubmit)="onLogin()">
+      <h1>Login liga</h1>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email"/>
+      </mat-form-field>
+      <mat-form-field  appearance="fill" >
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="pass"/>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary"  >
+        <mat-icon>button</mat-icon>
+        Ingresar
+      </button>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>

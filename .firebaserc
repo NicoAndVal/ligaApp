@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ligaapp-98b7d": {
+      "hosting": {
+        "ligaApp": [
+          "ligaapp-98b7d"
+        ]
+      }
+    }
+  }
+}
