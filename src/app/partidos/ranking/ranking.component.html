@@ -1,0 +1,16 @@
+<h1>Ranking de jugadores</h1>
+
+<table matSort >
+  <tr>
+    <th mat-sort-header="ranking">Ranking N°</th>
+    <th mat-sort-header="nombre">Nombre</th>
+    <th mat-sort-header="foto">Foto</th>
+  </tr>
+
+  <tr *ngFor="let jugador of jugadores">
+    <td>{{jugador.ranking}}</td>
+    <td>{{jugador.nombre}}</td>
+    <td>{{jugador.foto}}</td>
+
+  </tr>
+</table>
