@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { promise } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +11,7 @@ export class FirebaseService {
   async login(email: string, pass: string): Promise<any> {
     try {
        const respAuth = await this.angularFireAuth.signInWithEmailAndPassword(email, pass);
+       console.log(respAuth)
         localStorage.setItem(
           'email', respAuth.user!.email!
         )

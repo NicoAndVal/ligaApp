@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Jugador } from '../interfaces/jugador.interface';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-ranking',
@@ -12,31 +13,44 @@ import {MatTableDataSource} from '@angular/material/table';
 export class RankingComponent implements OnInit {
 
   jugadores: Jugador[] = [];
+  public editar: boolean = false;
 
-  constructor(private firestore: FirestoreService) {
 
-    this.jugadores = [];
+  constructor(private firestore: FirestoreService,
+    private toast: ToastrService,
+    private router: Router
+  ) {
 
-    this.firestore.obtenerJugadores().subscribe((jugadoresSnapshot) => {
-      jugadoresSnapshot.forEach((jugador : Jugador) => {
+  }
+
+  ngOnInit(): void {
+    this.firestore.obtenerJugadores().subscribe(doc => {
+      this.jugadores = [];
+      doc.forEach((jugador: any) => {
         this.jugadores.push({
-          nombre: jugador.nombre,
-          grupo: jugador.grupo,
-          ranking: jugador.ranking,
-          foto: jugador.foto,
-          pos_grupo: jugador.pos_grupo
+          id: jugador.payload.doc.id,
+          ...jugador.payload.doc.data()
         })
       });
     })
+
   }
 
+  eliminarJugador(id: any) {
+    this.jugadores = [];
+    this.firestore.eliminarJugador(id).then(() => {
+      this.toast.error('Jugador eliminado con éxito', "Registro eliminado");
+    }).catch(error => {
+      this.toast.error('Algo salio mal', 'Error');
+      console.error(error);
+    })
 
-  ngOnInit(): void {
+  }
 
+  editarJugador(jugador: Jugador) {
 
-
-
-
+    this.firestore.addJugadorEdit(jugador);
+    this.editar = true;
   }
 
 

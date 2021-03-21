@@ -1,0 +1,86 @@
+<div class="container">
+
+  <h1>Editar Jugador</h1>
+
+  <form [formGroup]="formEditJugador"  class="formulario"  (ngSubmit)="guardarJugador()">
+    <!-- NOMBRE -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del jugador</mat-label>
+     <input
+        matInput
+        type="text"
+        formControlName="nombre"
+        />
+    </mat-form-field>
+
+    <!-- Grupo -->
+     <mat-form-field appearance="fill" >
+        <mat-label>Grupo</mat-label>
+        <mat-select formControlName="grupo"
+        >
+          <mat-option *ngFor="let grupo of grupos" [value]="grupo" >
+            {{grupo}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- PARTIDOS JUGADOS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Partidos Jugados</mat-label>
+      <input
+      matInput
+      formControlName="partidos_jugados"
+      type="number">
+    </mat-form-field>
+    <!-- PARTIDOS GANADOS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Partidos Ganados</mat-label>
+      <input
+      matInput
+      formControlName="partidos_ganados"
+      type="number">
+    </mat-form-field>
+    <!-- SET GANADOS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Set Gandos</mat-label>
+      <input
+      matInput
+      formControlName="set_ganados"
+      type="number">
+    </mat-form-field>
+    <!-- PUNTOS PERDIDOS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Partidos Perdidos</mat-label>
+      <input
+      matInput
+      formControlName="partidos_perdidos"
+      type="number">
+    </mat-form-field>
+    <!-- PUNTOS GANADOS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Puntos Ganados</mat-label>
+      <input
+      matInput
+      formControlName="puntos_ganados"
+      type="number">
+    </mat-form-field>
+    <!-- PUNTOS RANKING -->
+    <mat-form-field appearance="fill">
+      <mat-label>Puntos Ranking</mat-label>
+      <input
+      matInput
+      formControlName="puntos_ranking"
+      type="number">
+    </mat-form-field>
+    <!-- RANKING -->
+    <mat-form-field appearance="fill">
+      <mat-label>Ranking</mat-label>
+      <input
+      matInput
+      formControlName="ranking"
+      type="number">
+    </mat-form-field>
+
+    <button mat-raised-button>Editar Jugador</button>
+
+  </form>
+</div>

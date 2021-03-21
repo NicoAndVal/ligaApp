@@ -1,7 +1,6 @@
-import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Jugador } from '../partidos/interfaces/jugador.interface';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { Jugador } from '../partidos/interfaces/jugador.interface';
 })
 export class FirestoreService {
 
-  public jugadoresDb: any;
+  private jugador$ = new Subject<any>();
 
   constructor(private firestore : AngularFirestore) { }
 
@@ -23,37 +22,29 @@ export class FirestoreService {
     }
    }
 
+
   obtenerJugadores() : Observable<any> {
-   try {
-     return this.firestore.collection('jugadores').valueChanges();
-    } catch (error) {
-      console.log('Error getUser -> ' + error);
-      return error;
-    }
+     return this.firestore.collection('jugadores').snapshotChanges();
   }
 
-  obtenerJugadoresGrupo(grupo:string): Observable<any>{
-    try {
-     return this.firestore.collection('jugadores', ref => ref.where('grupo', '==', grupo)).valueChanges();
-    } catch (error) {
-      console.log('Error getUser -> ' + error);
-      return error;
-    }
+  obtenerJugadoresGrupo(grupo: string): Observable<any> {
+    return this.firestore.collection('jugadores', ref => ref.where('grupo', '==', grupo)).snapshotChanges();
   }
 
-  obtenerJugador() : Observable<Jugador> {
-    return new Observable(observer => {
-      this.firestore.firestore.collection('jugadores').get().then(queryShanpshot => {
-        queryShanpshot.forEach(resp => {
-          this.jugadoresDb.data();
-        })
-        observer.next(this.jugadoresDb);
-        observer.complete();
-      }).catch(error => {
-        observer.error(error);
-        observer.complete();
-      })
-    })
+  eliminarJugador(data: any): Promise<any>{
+    return this.firestore.collection('jugadores').doc(data).delete();
+
   }
 
+  addJugadorEdit(jugador : Jugador) {
+    this.jugador$.next(jugador);
+  }
+
+  getJugadorEdit(): Observable<Jugador> {
+    return this.jugador$.asObservable();
+  }
+
+  editarJugador(id: string, jugador: any): Promise<any>{
+    return this.firestore.collection('jugadores').doc(id).update(jugador);
+  }
 }

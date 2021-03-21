@@ -2,6 +2,7 @@ import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { FormGroup, FormControl, Validator } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-authentication',
@@ -17,7 +18,8 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +27,8 @@ export class AuthenticationComponent implements OnInit {
   onLogin() {
     console.log(this.loginForm.value.email);
     this.firebaseService.login(this.loginForm.value.email, this.loginForm.value.pass).then(resp => {
-      console.log("resp login-->", resp);
-      this.router.navigate(['/partidos']);
+      this.toastr.success('Has ingresado con éxito', 'Ingreso éxitoso');
+      this.router.navigate(['/partidos/ranking']);
     }).catch(error => {
       console.log(error);
     })

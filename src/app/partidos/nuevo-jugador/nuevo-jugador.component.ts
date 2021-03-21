@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validator } from '@angular/forms';
+import {FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Grupos, Jugador } from '../interfaces/jugador.interface';
 
@@ -13,9 +14,8 @@ import { Grupos, Jugador } from '../interfaces/jugador.interface';
 export class NuevoJugadorComponent implements OnInit {
 
   public formNuevoJugador = new FormGroup({
-    nombre: new FormControl(''),
-    grupo: new FormControl(''),
-    foto: new FormControl('')
+    nombre: new FormControl('', Validators.required),
+    grupo: new FormControl('', Validators.required),
   })
 
   nuevoJugador: Jugador = {
@@ -28,7 +28,8 @@ export class NuevoJugadorComponent implements OnInit {
 
   constructor(
     private firestore: FirestoreService,
-    private routes: Router
+    private routes: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -39,30 +40,40 @@ export class NuevoJugadorComponent implements OnInit {
 
     this.nuevoJugador = {
       nombre: valoresFormulario.nombre,
-      foto: valoresFormulario.foto,
+      foto: '',
       ranking: 0,
+      partidos_ganados: 0,
+      partidos_jugados: 0,
+      partidos_perdidos: 0,
+      puntos_ranking:0,
       grupo: valoresFormulario.grupo,
       puntos_ganados: 0,
       set_ganados: 0,
       pos_grupo: 0
     }
 
-    console.log(this.nuevoJugador)
-
-    this.firestore.crearJugador(this.nuevoJugador)
+    this.firestore.crearJugador(this.nuevoJugador).then(() => {
+      this.toastr.success("Jugador agregado correctamente", 'Éxito')
+    }).catch(error => {
+      this.toastr.error('Upps algo salio mal', 'Error');
+      console.log(error);
+    })
 
     this.nuevoJugador = {
       nombre: '',
       foto: '',
       ranking: 0,
+      partidos_ganados: 0,
+      partidos_jugados: 0,
+      partidos_perdidos: 0,
+      puntos_ranking:0,
       grupo: valoresFormulario.grupo,
       puntos_ganados: 0,
       set_ganados: 0,
       pos_grupo: 0
     }
 
-    this.routes.navigate(['./partidos']);
-
+    this.routes.navigate(['./partidos/ranking']);
 
   }
 

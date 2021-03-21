@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

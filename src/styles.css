@@ -2,3 +2,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.distancia{
+  margin: 3rem 0;
+}
+
+.mr-1{
+  margin: 1rem;
+}
+.mr-2{
+  margin: 2rem;
+}
+.mr-3{
+  margin: 3rem;
+}

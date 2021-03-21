@@ -5,3 +5,13 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+
+button{
+  margin: 1rem;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}

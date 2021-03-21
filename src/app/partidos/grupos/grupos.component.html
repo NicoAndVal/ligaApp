@@ -1,109 +1,37 @@
-<!-- <h1>Fase de grupos</h1>
 
-<mat-tab-group mat-align-tabs="center" >
+<div class="grid">
+  <h1>Fase de grupos</h1>
 
-  <mat-tab label="Grupo A" (click)="obtenerJugadores('Grupo A')">
-    <h1>Grupo A</h1>
+  <nav mat-tab-nav-bar>
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      (click)="activeLink = link"
+      (click)="obtenerJugadores(link)"
+      [active]="activeLink == link"
+    >
+      {{ link }}
+    </a>
+  </nav>
 
-    <table matSort >
-      <tr>
-        <th mat-sort-header="ranking">Ranking N°</th>
-        <th mat-sort-header="nombre">Nombre</th>
-        <th mat-sort-header="foto">Foto</th>
-      </tr>
+  <h1>{{ activeLink }}</h1>
 
-      <tr *ngFor="let jugadorG of jugadoresGrupo">
-        <td>{{jugadorG.ranking}}</td>
-        <td>{{jugadorG.nombre}}</td>
-        <td>{{jugadorG.foto}}</td>
+  <table matSort >
+  <tr>
+    <th mat-sort-header="nombre">Ranking</th>
+    <th mat-sort-header="nombre">Nombre</th>
+    <th mat-sort-header="ranking">Partidos Jugados</th>
+    <th mat-sort-header="ranking">Partidos Ganados</th>
+  </tr>
 
-      </tr>
-    </table>
+  <tr *ngFor="let jugador of jugadoresGrupo; let i=index" class="jugadores">
+    <td>{{i+1}}</td>
+    <td>{{jugador.nombre}}</td>
+    <td>{{jugador.partidos_jugados}}</td>
+    <td>{{jugador.partidos_ganados}}</td>
+  </tr>
+</table>
 
-  </mat-tab>
-  <a mat-tab-link label="Grupo B" (click)="obtenerJugadores('Grupo B')"  >
-    <h1>Grupo B</h1>
+</div>
 
-    <table matSort >
-      <tr>
-        <th mat-sort-header="ranking">Ranking N°</th>
-        <th mat-sort-header="nombre">Nombre</th>
-        <th mat-sort-header="foto">Foto</th>
-      </tr>
-
-      <tr *ngFor="let jugadorG of jugadoresGrupo">
-        <td>{{jugadorG.ranking}}</td>
-        <td>{{jugadorG.nombre}}</td>
-        <td>{{jugadorG.foto}}</td>
-
-      </tr>
-    </table>
-
-  </a>
-  <mat-tab label="Grupo C" >
-    <h1>Grupo C</h1>
-
-    <table matSort >
-      <tr>
-        <th mat-sort-header="ranking">Ranking N°</th>
-        <th mat-sort-header="nombre">Nombre</th>
-        <th mat-sort-header="foto">Foto</th>
-      </tr>
-
-      <tr *ngFor="let jugador of jugadoresC">
-        <td>{{jugador.ranking}}</td>
-        <td>{{jugador.nombre}}</td>
-        <td>{{jugador.foto}}</td>
-
-      </tr>
-    </table>
-
-  </mat-tab>
-  <mat-tab label="Grupo D" >
-    <h1>Grupo D</h1>
-
-    <table matSort >
-      <tr>
-        <th mat-sort-header="ranking">Ranking N°</th>
-        <th mat-sort-header="nombre">Nombre</th>
-        <th mat-sort-header="foto">Foto</th>
-      </tr>
-
-      <tr *ngFor="let jugador of jugadoresD">
-        <td>{{jugador.ranking}}</td>
-        <td>{{jugador.nombre}}</td>
-        <td>{{jugador.foto}}</td>
-
-      </tr>
-    </table>
-
-  </mat-tab>
-
-</mat-tab-group> -->
-
-
-<nav mat-tab-nav-bar >
-  <a mat-tab-link *ngFor="let link of links"
-     (click)="activeLink = link"
-     (click)="obtenerJugadores(link)"
-     [active]="activeLink == link"> {{link}} </a>
-</nav>
-
-
-<h1>{{activeLink}} </h1>
-
-    <table matSort >
-      <tr>
-        <th mat-sort-header="ranking">Ranking N°</th>
-        <th mat-sort-header="nombre">Nombre</th>
-        <th mat-sort-header="foto">Foto</th>
-      </tr>
-
-      <tr *ngFor="let jugador of jugadoresGrupo">
-        <td>{{jugador.ranking}}</td>
-        <td>{{jugador.nombre}}</td>
-        <td>{{jugador.foto}}</td>
-
-      </tr>
-    </table>
-
+<app-agregar-partido class="mr-3" [jugadores]="jugadoresGrupo"></app-agregar-partido>

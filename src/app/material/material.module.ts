@@ -10,7 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatSortModule} from '@angular/material/sort';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+
 
 
  @NgModule({
@@ -26,7 +29,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatGridListModule,
     MatSelectModule,
     MatSortModule,
-    MatTabsModule
+     MatTabsModule,
+     MatProgressSpinnerModule,
+     MatTableModule
   ]
 })
 export class MaterialModule { }

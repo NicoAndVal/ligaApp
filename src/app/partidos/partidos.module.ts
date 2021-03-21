@@ -8,6 +8,8 @@ import { NuevoJugadorComponent } from './nuevo-jugador/nuevo-jugador.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RankingComponent } from './ranking/ranking.component';
 import { GruposComponent } from './grupos/grupos.component';
+import { EditarJugadorComponent } from './editar-jugador/editar-jugador.component';
+import { AgregarPartidoComponent } from './agregar-partido/agregar-partido.component';
 
 
 
@@ -15,7 +17,9 @@ import { GruposComponent } from './grupos/grupos.component';
   declarations: [HomeComponent,
     NuevoJugadorComponent,
     RankingComponent,
-    GruposComponent],
+    GruposComponent,
+    EditarJugadorComponent,
+    AgregarPartidoComponent],
   imports: [
     CommonModule,
     PartidosRoutingModule,

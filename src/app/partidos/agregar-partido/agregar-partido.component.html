@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>Agregar nuevo partido</h1>
+  <form [formGroup]="formPartido" class="formulario" (ngSubmit)="guardarPartido()">
+
+     <mat-form-field
+      appearance="fill"
+    >
+      <mat-label>Nombre Jugador 1</mat-label>
+      <mat-select formControlName="jugador1">
+        <mat-option *ngFor="let jugador of jugadores" [value]="jugador.nombre">
+          {{ jugador.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Set Ganados</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="setGanados1"
+
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Puntos Ganados</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="puntosGanados1"
+
+      />
+    </mat-form-field>
+     <mat-form-field
+      appearance="fill"
+    >
+      <mat-label>Nombre Jugador 2</mat-label>
+      <mat-select formControlName="jugador2">
+        <mat-option *ngFor="let jugador of jugadores" [value]="jugador.nombre">
+          {{ jugador.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Set Ganados</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="setGanados2"
+
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Puntos Ganados</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="puntosGanados2"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      Agregar Partido
+    </button>
+  </form>
+</div>
+

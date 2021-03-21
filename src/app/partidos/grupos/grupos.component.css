@@ -1,0 +1,11 @@
+table{
+  width: 80%;
+}
+
+grid{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-rows: auto;
+  grid-template-columns: "100vw";
+}

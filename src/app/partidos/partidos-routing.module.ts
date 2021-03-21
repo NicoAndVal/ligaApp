@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { EditarJugadorComponent } from "./editar-jugador/editar-jugador.component";
 import { GruposComponent } from "./grupos/grupos.component";
  import { HomeComponent } from "./home/home.component";
 import { NuevoJugadorComponent } from "./nuevo-jugador/nuevo-jugador.component";
@@ -11,6 +12,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {path: 'ranking', component: RankingComponent},
+      {path: 'editar', component: EditarJugadorComponent},
       {path: 'grupos', component: GruposComponent},
       {path: 'nuevo-jugador', component: NuevoJugadorComponent}
     ]

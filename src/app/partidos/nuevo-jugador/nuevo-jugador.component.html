@@ -3,22 +3,24 @@
     <form [formGroup]="formNuevoJugador" class="example-form" class="formulario" (ngSubmit)="agregarJugador()">
       <h1>Agregar nuevo jugador</h1>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Nombre Jugador</mat-label>
-        <input matInput type="text" formControlName="nombre"/>
+      <mat-form-field appearance="fill" >
+        <mat-label
+        >Nombre Jugador</mat-label>
+        <input
+        [class.validarCampo]="this.formNuevoJugador.get('nombre')?.valid"
+        matInput type="text"
+        formControlName="nombre"
+        minlength="5" maxlength="30"
+        />
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill"  [class.validarCampo]="this.formNuevoJugador.get('grupo')?.valid">
         <mat-label>Grupo</mat-label>
-        <mat-select formControlName="grupo">
+        <mat-select formControlName="grupo"
+        >
           <mat-option *ngFor="let grupo of grupos"  [value]="grupo">
             {{grupo}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Foto</mat-label>
-        <input matInput type="text" formControlName="foto"/>
       </mat-form-field>
       <button mat-raised-button color="primary"  >
         <mat-icon>add</mat-icon>
