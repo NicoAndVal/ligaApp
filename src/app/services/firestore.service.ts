@@ -31,6 +31,9 @@ export class FirestoreService {
     return this.firestore.collection('jugadores', ref => ref.where('grupo', '==', grupo)).snapshotChanges();
   }
 
+  obtenerJugadorNombre(nombre: string): Observable<any>{
+    return this.firestore.collection('jugadores', ref => ref.where('nombre', '==', nombre)).snapshotChanges();
+  }
   eliminarJugador(data: any): Promise<any>{
     return this.firestore.collection('jugadores').doc(data).delete();
 
