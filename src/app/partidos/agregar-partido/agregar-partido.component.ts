@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Grupos, Jugador } from '../interfaces/jugador.interface';
 import { Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { validateEventsArray } from '@angular/fire/firestore';
 
 
 @Component({
@@ -30,12 +31,12 @@ export class AgregarPartidoComponent implements OnInit {
   private serviceSuscription: Subject<boolean> = new Subject();
 
   public formPartido = new FormGroup({
-    jugador1: new FormControl(''),
-    jugador2: new FormControl(''),
-    setGanados1: new FormControl(''),
-    setGanados2: new FormControl(''),
-    puntosGanados1: new FormControl(''),
-    puntosGanados2: new FormControl('')
+    jugador1: new FormControl('', Validators.required),
+    jugador2: new FormControl('', Validators.required),
+    setGanados1: new FormControl('', Validators.required),
+    setGanados2: new FormControl('', Validators.required),
+    puntosGanados1: new FormControl('', Validators.required),
+    puntosGanados2: new FormControl('', Validators.required)
   })
 
   constructor(private firestore: FirestoreService,
