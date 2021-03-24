@@ -12,6 +12,7 @@
     <th mat-sort-header="nombre">Nombre</th>
     <th mat-sort-header="partidos_jugados">Partidos Jugados</th>
     <th mat-sort-header="partidos_ganados">Partidos Ganados</th>
+    <th mat-sort-header="porcentaje_ganado">% ganados</th>
     <th mat-sort-header="partidos_perdidos">Partidos Perdidos</th>
     <th mat-sort-header="partidos_ranking">Partidos Ranking</th>
     <th mat-sort-header="accion">Acción</th>
@@ -20,9 +21,10 @@
   <tr *ngFor="let jugador of jugadores; let i=index" class="jugadores">
 
     <td>{{i+1}}</td>
-    <td>{{jugador.nombre}}</td>
+    <td>{{jugador.nombre | uppercase }}</td>
     <td>{{jugador.partidos_jugados}}</td>
     <td>{{jugador.partidos_ganados}}</td>
+    <td>{{jugador | porcentajeGanado }}</td>
     <td>{{jugador.partidos_perdidos}}</td>
     <td>{{jugador.puntos_ranking}}</td>
     <td>

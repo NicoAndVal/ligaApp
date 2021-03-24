@@ -10,6 +10,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { GruposComponent } from './grupos/grupos.component';
 import { EditarJugadorComponent } from './editar-jugador/editar-jugador.component';
 import { AgregarPartidoComponent } from './agregar-partido/agregar-partido.component';
+import { PorcentajeGanadoPipe } from './pipes/porcentaje-ganado.pipe';
 
 
 
@@ -19,13 +20,15 @@ import { AgregarPartidoComponent } from './agregar-partido/agregar-partido.compo
     RankingComponent,
     GruposComponent,
     EditarJugadorComponent,
-    AgregarPartidoComponent],
+    AgregarPartidoComponent,
+    PorcentajeGanadoPipe
+  ],
   imports: [
     CommonModule,
     PartidosRoutingModule,
     SharedModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class PartidosModule { }

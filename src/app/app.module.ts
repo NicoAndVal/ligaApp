@@ -18,6 +18,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { MaterialModule } from './material/material.module';
 
 import { ReactiveFormsModule} from '@angular/forms';
+import { PorcentajeGanadoPipe } from './partidos/pipes/porcentaje-ganado.pipe';
 
 @NgModule({
   declarations: [
