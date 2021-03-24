@@ -74,7 +74,7 @@ export class NuevoJugadorComponent implements OnInit {
     }
 
     this.formNuevoJugador.reset();
-    //this.routes.navigate(['./partidos/ranking']);
+    this.routes.navigate(['./partidos/ranking']);
 
   }
 
